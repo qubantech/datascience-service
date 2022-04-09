@@ -1,0 +1,13 @@
+services:
+    web:
+        build: .
+        ports:
+            - "5000:5000"
+        links: [rabbit]
+        volumes:
+            - .:/code
+    rabbit:
+        hostname: rabbit
+        image: rabbitmq:latest
+        ports:
+            - "5672:5672"
