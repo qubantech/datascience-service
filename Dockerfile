@@ -1,8 +1,6 @@
-FROM python:3
+FROM python:3.8-alpine
 RUN mkdir code
-ADD flask_server.py requirements.txt /code/
+ADD requirements.txt main.py /code/
 WORKDIR /code
 RUN pip install -r requirements.txt
-ENV FLASK_APP flask_server.py
-EXPOSE 5000
-CMD ["flask", "run", "-h", "0.0.0.0"]
+CMD [ "python", "./main.py" ]
